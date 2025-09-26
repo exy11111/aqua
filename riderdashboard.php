@@ -36,10 +36,8 @@
     $stmt->execute();
     $status_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $sql = "SELECT status FROM rider_status WHERE user_id = :user_id AND DATE(date) = :date";
+    $sql = "SELECT status FROM store_status WHERE ss_id = 1";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':user_id', $user_id);
-    $stmt->bindParam(':date', $today);
     $stmt->execute();
     $rider_status = $stmt->fetchColumn();
     if($rider_status == 0){
@@ -246,25 +244,6 @@
                                         <?php endif; ?>
                                     </div>
                                 </div>
-                            </div>
-
-
-                            <!-- Shift Info -->
-                            <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                <h5>Shift Schedule</h5>
-                                <p class="mb-1">8:00 AM – 5:00 PM</p>
-                                <?php
-                                    $badgeClass = $status_rider ? 'bg-success' : 'bg-secondary';
-                                    $statusText = $status_rider ? 'On Duty' : 'Off Duty';
-                                    ?>
-                                    Status: 
-                                    <a class="mb-0" href="javascript:void(0);" onclick="return confirmToggle(event, <?= $status_rider ?>)">
-                                        <span class="badge <?= $badgeClass ?>"><?= $statusText ?></span>
-                                    </a>
-                                </div>
-                            </div>
                             </div>
                         </div>
                     </div>
