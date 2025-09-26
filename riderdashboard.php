@@ -30,7 +30,7 @@
     $stmt->execute();
     $order_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Fetch available order statuses
+    // Fetch available order statusesa
     $sql = "SELECT * FROM orderstatus WHERE status_id IN (3, 4, 6)";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
